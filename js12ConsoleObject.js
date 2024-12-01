@@ -145,6 +145,24 @@ console.log(user)
 console.log(users)
 console.groupEnd()
 
+//console.groupCollapsed()
+//indicates the start of a collapsed message group
+//click the expand button to open the message group
+console.groupCollapsed();
+console.log('Expanded message');
+//output  
+//Expanded message
+//groupEnd() closes the message group
+console.log("Hola que tal");
+console.group();
+console.log("Hola otra vez, esta vez dentro de un grupo")
+console.groupEnd();
+console.log("and we are back");
+//output
+//Hola que tal
+//Hola otra vez, esta vez dentro de un grupo
+//and we are back
+
 //console.count() prints the number of times the console.count() is called. 
 //It takes a string label parameter. 
 //It is very helpful to count the number of times a function is called.
@@ -160,4 +178,31 @@ const func = () => {
 //Function has been called: 3
 
 //console.clear() cleans the browser console.
+//it will also write a message in the console: "Console cleared"
+console.clear();
+
+//console.table() prints the data in a table format.
+const namesC = ['Asabeneh', 'Brook', 'David', 'John']
+const agesC = [20, 21, 19, 22]
+const countriesC = ['Finland', 'Sweden', 'Norway', 'Denmark']
+const data = [namesC, agesC, countriesC]
+console.table(data)
+//output
+//[ Array(4), Array(4), Array(4)]
+// 0: 'Asabeneh'
+// 1: 'Brook'
+// 2: 'David'
+// 3: 'John'
+// 4: Array(4)
+// 0: 20
+// 1: 21
+// 2: 19
+// 3: 22
+// 4: Array(4)
+// 0: 'Finland'
+// 1: 'Sweden'
+// 2: 'Norway'
+// 3: 'Denmark'
+
+
 
