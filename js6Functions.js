@@ -26,7 +26,15 @@ function printFullName (){
 }
 printFullName() // calling a function
 
-//Function can also return values, if a function does not return values the value of the function is undefined
+//Function Expressions
+//The function is part of an expression, often assigned to a variable
+//useful for anonymnous functions or when you want to control where the function is available
+var functionExopression = function() {
+  console.log("Function Expression");
+}
+
+//Function can also return values, if a function does not return values 
+//the value of the function is undefined
 function printFullName (){
     let firstName = 'Asabeneh'
     let lastName = 'Yetayeh'
@@ -162,6 +170,8 @@ console.log(squaredNum)
 
 //ARROW FUNCTIONS
 //Arrow function uses arrow instead of the keyword function to declare a function
+const arrowFunction = () => console.log("Arrow Funciton");
+
 // Let us change this declaration function to an arrow function
 function square(n) {
     return n * n
@@ -232,3 +242,4 @@ const weightOfObject = (mass, gravity = 9.81) => mass * gravity + ' N'
 console.log('Weight of an object in Newton: ', weightOfObject(100)) // 9.81 gravity at the surface of Earth
 console.log('Weight of an object in Newton: ', weightOfObject(100, 1.62)) // gravity at surface of Moon
 
+//Function Constructor
