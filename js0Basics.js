@@ -144,3 +144,17 @@ Math.cos(0)
 Math.cos(60)
 
 
+// Instanceof returns true 
+// if the specified object is an instance of the specified object
+let cars = ['Volvo','BMW']
+cars instanceof Array; //true
+
+//new
+//operator to create an instance of a user-defined object type
+//or of one of the built-in object types
+const car1 = new Car("Eagle");
+
+//void
+//this operator allows evaluating expressions that prduce a value
+//into places where an expression that evaluates to undefined is desired
+void (2 == '2'); //undefined
