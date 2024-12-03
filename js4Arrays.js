@@ -75,6 +75,10 @@ console.log(`array arrb: ${arrB}`)
 const eightEmptyValues = Array(8) // it creates eight empty values
 console.log(eightEmptyValues) // [empty x 8]
 
+//valueOf() method returns the array itself
+const cosa = Array(8).valueOf() // returns the array itself
+console.log(cosa) // [empty x 8]
+
 //Creating static values with fill
 const arrC = Array() // creates an an empty array
 console.log(arrC)
@@ -128,6 +132,10 @@ console.log(numbers5.lastIndexOf(0)) // -1
 console.log(numbers5.lastIndexOf(1)) //  6
 console.log(numbers5.lastIndexOf(4)) //  3
 console.log(numbers5.lastIndexOf(6)) // -1
+
+//includes() check if an element exist in the array
+const numbers6 = [1, 2, 3, 4, 5]
+console.log(numbers6.includes(5)) // true
 
 console.log(numbers5.includes(5)) // true
 console.log(numbers5.includes(0)) // false
@@ -183,8 +191,8 @@ console.log(numbers9.splice(3, 3, 7, 8, 9))  // -> [1, 2, 3, 7, 8, 9] //it remov
 
 //Adding item to an array using push
 const arrD  = ['item1', 'item2','item3']
-arrD.push('new item')
-console.log(arrD)
+cosa.push('new item')
+console.log(cosa)
 // ['item1', 'item2','item3','new item']
 
 const numbers10 = [1, 2, 3, 4, 5]
@@ -202,6 +210,14 @@ console.log(numbers11) // -> [2,3,4,5]
 const numbers12 = [1, 2, 3, 4, 5]
 numbers12.unshift(0) // -> add one item from the beginning
 console.log(numbers12) // -> [0,1,2,3,4,5]
+
+//copyWithin()
+//copies array elements to another position in an array
+//overwritting the existing values
+//This method will never add more items to the array
+const numbers13 = [1, 2, 3, 4, 5, 6]
+numbers13.copyWithin(0, 3, 6) // -> copy array element 3, 4, and 5 to 0, 1, 2
+console.log(numbers13) // -> [4, 5, 6, 4, 5, 6]
 
 //reverse the order of an array
 numbers12.reverse() // -> reverse array order
@@ -226,4 +242,59 @@ console.log(numbers12) // [0, 1, 2, 3, 4, 5]
   webTechs.reverse() // after sorting we can reverse it
   console.log(webTechs) // ["Redux", "React", "Node", "MongoDB", "JavaScript", "HTML", "CSS"]
 
-  
+//entries()
+//Returns an Array Iterator object with key/value pairs
+const arrE = ['a', 'b', 'c']
+const iterator = arrE.entries()
+console.log(iterator.next().value) // [0, 'a']
+console.log(iterator.next().value) // [1, 'b']
+console.log(iterator.next().value) // [2, 'c']
+console.log(iterator.next().value) // undefined
+
+//every()
+//Checks if every element in an array is similar in the same data type
+const names2 = ['Asabeneh', 'Mathias', 'Elias', 'Brook']
+console.log(names2.every(name => typeof name === 'string')) // true
+console.log(names2.every(name => name.length > 5)) // false
+
+//filter()
+//Creates a new array with all elements that pass the test implemented by the provided function
+var ages = [32, 33, 16, 40];
+function checkAdult(age) {
+  return age >= 18;
+}
+ages.filter(checkAdult) // -> [32, 33, 40]
+const ages2 = [24, 22, 25, 32, 35, 18]
+const ages3 = ages2.filter(age => age > 18)
+console.log(ages3) // [24, 22, 25, 32]
+const ages4 = ages2.filter(age => age > 30)
+console.log(ages4) // [32, 35]
+
+//find()
+//Returns the first element in an array that satisfies a specified condition
+const ages5 = [24, 22, 25, 32, 35, 18]
+const ages6 = ages5.find(age => age > 30)
+console.log(ages6) // 32
+const ages7 = ages5.find(age => age > 40)
+console.log(ages7) // undefined
+
+//findIndex()
+//Returns the index of the first element in an array that satisfies a specified condition
+const ages8 = [24, 22, 25, 32, 35, 18]
+const ages9 = ages8.findIndex(age => age > 30)
+console.log(ages9) // 3
+
+//forEach()
+//Calls a function for each element in an array
+let numbersB = [65,44,12,4];
+numbersB.forEach(myFunction)
+function myFunction(item, index, arr) {
+  arr[index] = item * 10;
+}
+console.log(numbersB) // [650, 440, 120, 40]
+
+//some()
+//Checks if some of the elements in an array are similar in the same data type
+const ages10 = [24, 22, 25, 32, 35, 18]
+console.log(ages10.some(age => age > 30)) // true
+console.log(ages10.some(age => age > 40)) // false
