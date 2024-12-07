@@ -50,3 +50,51 @@ switch (true) {
     console.log('Entered value was not a number');
 }
 
+//Ternary operator
+let isRaining2 = true
+isRaining2
+  ? console.log('You need a rain coat.') //return if the condition is true
+  : console.log('No need for a rain coat.') //return if the condition is false
+
+//Jump/dispatch table
+//Stores value-function paris in an object to quickly fetch and run a function
+//based on a value (treated as an object key)
+const run = () => { console.log("Run away!")}
+const attack = () => { console.log("Attack!")}
+const specialAttack = () => { console.log("Special Attack!")}
+const handleAction = {
+  "newbie": run,
+  "intermediate": attack,
+  "advanced": attack,
+  "expert": specialAttack
+}
+const level = "intermediate"
+handleAction[level]() // Attack!
+
+
+//Dynamic Dispatch
+//Executes a version of a method based on the type of the object
+const handleGreet = (animal) => {
+  animal.greet()
+}
+class Creature {
+  contructor (health = 100) {
+    this.health = health
+  }
+  greet () {
+    console.log("Hello, I'm a creature")
+  }
+}
+class Dog extends Creature {
+  greet () {
+    console.log("Hello, I'm a dog")
+  }
+}
+class Cat extends Creature {
+  greet () {
+    console.log("Hello, I'm a cat")
+  }
+}
+
+const Winston = new Dog()
+handleGreet(Winston) // Hello, I'm a dog
