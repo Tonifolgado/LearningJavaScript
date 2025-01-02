@@ -1,3 +1,60 @@
+
+//OPTIONAL CHAINING
+//instead of this
+if(user && user.address && user.address.city) {
+    console.log(user.address.city);
+}
+//do this
+console.log(user?.address?.city);
+
+//Array Destructuring
+//instead of this
+let numbers = [1,2,3];
+let first = numbers[0];
+let second = numbers[1];
+//Do this:
+let [firstb,secondb] = numbers;
+
+//Spread operator
+//instead of this
+let arr1 = [1,2];
+let arr2 = [3,4];
+let arr3 = arr1.concat(arr2);
+//do this
+let combined = [...arr1, ...arr2];
+
+//Nullish Coalescing Operator
+//instead of this
+let name = someValue !== null && someValue !== undefined?
+someValue : 'default value';
+//do this
+let name2 = someValue ?? 'default value';
+
+//Array Mapping
+//instead of this
+let numbersB = [1,2,3];
+let doubled = numbersB.map(function(num) {
+    return num * 2;
+});
+//do this
+let doubledB = numbersB.map(num => num * 2);
+
+//Shorthand for Filtering
+//instead of this
+let numbersC = [1,2,3,4,5];
+let evens = numbersC.filter(function(num) {
+    return num % 2 === 0;
+});
+//do this
+let evensB = numbersC.filter(num => num % 2 === 0);
+
+//Converting to Boolean
+//instead of this
+let isValid = value ? true:false;
+//do this
+let isValidB = !!value;
+
+
 //merge two arrays and remove duplicates
 const mergeArrays = (arr1, arr2) => [...new Set([...arr1, ...arr2])];
 console.log(mergeArrays([1, 2, 3], [3, 4, 5]));

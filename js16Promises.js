@@ -147,4 +147,129 @@ const fetchData = async () => {
   console.log('===== async and await')
   fetchData()
 
-  
+//Promise.all(iterable)
+//It is a static method that takes an iterable as input and returns a single promise
+//The returned promise fulfills when all of the input promises fulfill, with an array of the fulfillment values.
+//It rejects immediately if any of the promises are rejected.
+let p1 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('Promise 1 resolved')
+    }, 1000)
+  });
+  let p2 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('Promise 2 resolved')
+    }, 2000)
+  });
+  let p3 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('Promise 3 resolved')
+    }, 3000)
+  });
+  Promise.all([p1, p2, p3])
+    .then(values => {
+      console.log(values);  // ["Promise 1 resolved", "Promise 2 resolved", "Promise 3 resolved"]
+    })
+    .catch(error => {
+      console.log(error.message);
+    });
+
+    //Promise.allSettled(iterable)
+//Returns a new Promise that resolves after all promises in the iterable have settled 
+//(either resolved or rejected)
+//The returned promise resolves to an array of objects representing the outcome of each promise
+let p5 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('Promise 1 resolved')
+    }, 1000)
+  });
+  let p6 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      reject('Promise 2 rejected')
+    }, 2000)
+  });
+  let p7 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('Promise 3 resolved')
+    }, 3000)
+  });
+  Promise.allSettled([p5, p6, p7])
+    .then(values => {
+      console.log(values);
+      // [
+      //   { status: 'fulfilled', value: 'Promise 1 resolved' },
+      //   { status: 'rejected', reason: 'Promise 2 rejected' },
+      //   { status: 'fulfilled', value: 'Promise 3 resolved' }
+      // ]
+    })
+    .catch(error => {
+      console.log(error.message);
+    });
+
+//Promise.race(iterable)
+//Waits for the first promise to settle and its result/error becomes the outcome
+let p8 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('Promise 1 resolved')
+    }, 1000)
+  });
+let p9 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      reject(new Error('Promise 2 rejected'))
+    }, 2000)
+  });
+  let p10 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('Promise 3 resolved')
+    }, 500)
+  });
+  Promise.race([p8, p9, p10])
+    .then(values => {
+      console.log(values); // "Promise 3 resolved"
+    })
+    .catch(error => {
+      console.log(error.message); // "Promise 2 rejected"
+    });
+
+//Promise.any(iterable)
+//Returns a new promise tht resolves as soon as one of the promises in the iterable resolves
+//If all promises reject the returned Promise is rejected with an AggregateError
+//containing all the rejection reasons
+let p11 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('Promise 1 resolved')
+    }, 1000)
+  });
+  let p12 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      reject(new Error('Promise 2 rejected'))
+    }, 2000)
+  });
+  let p13 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('Promise 3 resolved')
+    }, 500)
+  });
+  Promise.any([p11, p12, p13])
+    .then(values => {
+      console.log(values); // "Promise 3 resolved"
+    })
+    .catch(error => {
+      console.log(error.message); // "Promise 2 rejected"
+    });
+
+//Promise.resolve(value)
+//Returns a new Promise object that is resolved with the given value
+let p14 = Promise.resolve('Promise 14 resolved') 
+resolve.then(value => {
+  console.log(value); // "Promise 14 resolved"
+});
+
+//Promise.reject(reason)
+//Returns a new Promise object that is rejected with the given reason
+let p15 = Promise.reject(new Error('Promise 15 rejected'))
+error.catch(error => {
+  console.log(error.message); // "Promise 15 rejected"
+})
+
+

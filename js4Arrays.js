@@ -253,9 +253,20 @@ console.log(iterator.next().value) // undefined
 
 //every()
 //Checks if every element in an array is similar in the same data type
+//Test whethe all elemnts in an array pass a certain condition
+//it returns true if the callback function returns true for every element in the array
+//otherwise it returns false
 const names2 = ['Asabeneh', 'Mathias', 'Elias', 'Brook']
 console.log(names2.every(name => typeof name === 'string')) // true
 console.log(names2.every(name => name.length > 5)) // false
+
+const numbersK = [1, 2, 3, 4, 5];
+const allPositive = numbersK.every(num => num > 0);
+console.log(allPositive);//true
+
+const numbersL = [2,4,6,8];
+const allEven = numbersL.every(num => num % 2 === 0);
+console.log(allEven);//true
 
 //filter()
 //Creates a new array with all elements that pass the test implemented by the provided function
