@@ -96,4 +96,35 @@ for(let i = 0; i <= 5; i++){
   }
   // 0 1 2 4 5
 
+//map() vs forEach() to iterate through an array
+//The forEach() method executes a provided function once for each array element.
+let numbers2 = [1, 2, 3, 4, 5]
+let sum2 = 0
+numbers2.forEach(function(num) {
+  sum2 += num
+})
+console.log(sum2) // 15
+//The map() method creates a new array populated with the results of calling a provided function on every element in the calling array.
+let numbers3 = [1, 2, 3, 4, 5]
+let squares = numbers3.map(function(num) {
+  return num * num
+})
+console.log(squares) // [1, 4, 9, 16, 25]
+
+//The forEach() method does not return anything, it just executes the function once for each element in the array.
+//The map() method returns a new array, it does not change the original array.
+//The forEach() method can be used to iterate through an array and perform some action on each element.
+//The map() method can be used to create a new array based on the original array.
+
+//Chaining methods
+//map() is chainable. You can attach it reduce(), sort(), filter()
+let numbers4 = [1, 2, 3, 4, 5]
+let squares2 = numbers4.map(function(num) {
+  return num * num
+}).filter(function(num) {
+  return num > 10
+})
+console.log(squares2) // [16, 25]
+//The forEach() method is not chainable. You cannot attach it to other methods.
+
 
