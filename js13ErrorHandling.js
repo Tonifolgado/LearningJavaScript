@@ -81,3 +81,53 @@ console.log(num2.toLowerCase())
 //Uncaught TypeError: num.toLowerCase is not a function
 
 */
+
+//Custom Error Class
+class DeploymentError extends Error {
+    constructor(message, code) {
+      super(message)
+      this.name = 'DeploymentError';
+      this.code = code;
+    }
+  }
+
+function deployService(service) {
+    if (!service) {
+      throw new DeploymentError('Service name is required', 400);
+    }
+    // Simulate deployment logic
+    console.log(`Deploying service: ${service}`);
+  }
+  try {
+    deployService();
+  } catch (error) {
+    if (error instanceof DeploymentError) {
+      console.error(`Deployment failed: ${error.message} (Code: ${error.code})`);
+    } else {
+      console.error('An unexpected error occurred:', error);
+    }
+  }
+//Deployment failed: Service name is required (Code: 400)
+
+//Handling API Errors with Try-Catch in Async/Await
+async function fetchDeployment(){
+    try{
+        const response = await fetch('https://api.example.com/deployments');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        console.log(data);
+        console.log("Failed to fetch deployment status: ", data.status);
+        if (data.status === 'failed') {
+            throw new Error('Deployment failed');
+        }
+        console.log('Deployment successful:', data);
+    }
+    catch (error) {
+        console.error('Error fetching deployment data:', error);
+    }
+    finally {
+        console.log('Fetch attempt completed.');
+    }
+}
