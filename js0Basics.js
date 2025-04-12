@@ -120,6 +120,7 @@ console.log(randomNumRoundToFloor)    // this gives between 0 and 10
 
 //Absolute value
 console.log(Math.abs(-10))      // 10
+console.log()
 
 //Square root
 console.log(Math.sqrt(100))     // 10
