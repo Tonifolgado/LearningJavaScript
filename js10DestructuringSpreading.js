@@ -265,5 +265,4 @@ const sumAllNums2 = (...args) => {
     return sum
   }
 console.log(sumAllNums2(1, 2, 3, 4, 5))
-//15
 
